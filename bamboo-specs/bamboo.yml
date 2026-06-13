@@ -1,0 +1,23 @@
+---
+version: 2
+plan:
+  project-key: TCMIG
+  key: GODEMO
+  name: tc-migrate-bamboo-demo
+stages:
+  - Build:
+      jobs:
+        - Build
+  - Test:
+      jobs:
+        - Test
+Build:
+  tasks:
+    - checkout
+    - script:
+        - echo "Building ${bamboo.build.number}"
+        - go build ./...
+Test:
+  tasks:
+    - script:
+        - go test ./...
