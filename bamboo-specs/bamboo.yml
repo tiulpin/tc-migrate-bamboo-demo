@@ -13,7 +13,8 @@ stages:
         - Test
 Build:
   tasks:
-    - checkout
+    - checkout:
+        force-clean-build: 'false'
     - script:
         - echo "Building ${bamboo.build.number}"
         - go build ./...
